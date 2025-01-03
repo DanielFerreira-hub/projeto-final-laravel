@@ -81,3 +81,47 @@ public function destroy($id)
 }
 
 |------------------------------------------------------------|
+
+3. Testar no Insomnia
+
+    Endpoint para Criar Consulta
+        Método: POST
+        URL: http://localhost/api/appointments
+        Body (JSON):
+            {
+                "doctor_id": 1,
+                "patient_id": 2,
+                "date": "2025-01-15",
+                "time": "14:30"
+            }
+        Resposta Esperada (201):
+            {
+                "message": "Consulta criada com sucesso!",
+                "data": {
+                    "id": 1,
+                    "doctor_id": 1,
+                    "patient_id": 2,
+                    "date": "2025-01-15",
+                    "time": "14:30"
+                }
+            }
+    Endpoint com Erro de Validação
+        Body (JSON):
+            {
+                "doctor_id": 99,
+                "patient_id": 2,
+                "date": "2020-01-01",
+                "time": "25:00"
+            }
+        Resposta Esperada (422):
+            {
+                "message": "Erro de validação.",
+                "errors": {
+                    "doctor_id": ["O médico selecionado não existe."],
+                    "date": ["A data deve ser futura."],
+                    "time": ["A hora deve estar no formato HH:MM."]
+                }
+            }
+
+
+
