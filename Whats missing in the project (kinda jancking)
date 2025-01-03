@@ -1,1 +1,83 @@
+Resumo do Estado Atual
+Requisito	- Estado
+Autenticação JWT + Sistema de Roles	- Implementado
+Definição de Routes	- Implementado
+Models (5) com métodos das relações -	Implementado
+Validação de dados + Mensagens personalizadas + JSON	- Não Implementado
+Migrations (5) -	Implementado
+Controllers (5)	- Implementado
 
+
+O que tenho que fazer ainda:
+
+1. Validação de Dados
+
+A validação de dados é feita utilizando a classe Illuminate\Http\Request. A lógica deve ser incluída nos métodos dos controladores.
+Passo 1: Adicionar Validação no Controlador
+
+Exemplo no controlador de Appointments:
+
+// Dentro do método store (para criar um novo appointment)
+public function store(Request $request)
+{
+    $validated = $request->validate([
+        'doctor_id' => 'required|exists:doctors,id',
+        'patient_id' => 'required|exists:patients,id',
+        'date' => 'required|date|after:today',
+        'time' => 'required|date_format:H:i',
+    ], [
+        'doctor_id.required' => 'O campo médico é obrigatório.',
+        'doctor_id.exists' => 'O médico selecionado não existe.',
+        'patient_id.required' => 'O campo paciente é obrigatório.',
+        'patient_id.exists' => 'O paciente selecionado não existe.',
+        'date.required' => 'O campo data é obrigatório.',
+        'date.date' => 'O campo data deve ser uma data válida.',
+        'date.after' => 'A data deve ser futura.',
+        'time.required' => 'O campo hora é obrigatório.',
+        'time.date_format' => 'A hora deve estar no formato HH:MM.',
+    ]);
+
+    // Código para criar o appointment
+    $appointment = Appointment::create($validated);
+
+    return response()->json([
+        'message' => 'Consulta criada com sucesso!',
+        'data' => $appointment,
+    ], 201);
+}
+|------------------------------------------------------------|
+Passo 2: Mensagens Personalizadas
+
+No exemplo acima, as mensagens personalizadas são fornecidas como o segundo parâmetro do método validate. Deves repetir esta lógica para cada controlador.
+
+2. Garantir Respostas em JSON
+
+Certifica-te de que todas as respostas, incluindo erros, são enviadas em formato JSON. Para isso:
+Passo 1: Manipular Respostas de Validação
+
+Laravel automaticamente retorna erros de validação em JSON quando usas o método validate. Caso queiras personalizar, podes fazer assim:
+use Illuminate\Validation\ValidationException;
+
+// No método handleValidationException no controlador base (se aplicável)
+protected function failedValidation(ValidationException $e)
+{
+    throw new HttpResponseException(
+        response()->json([
+            'message' => 'Erro de validação.',
+            'errors' => $e->errors(),
+        ], 422)
+    );
+}
+|------------------------------------------------------------|
+Passo 2: Garantir Respostas JSON em Controladores
+
+Certifica-te de que métodos como store, update, e destroy retornam sempre um JSON:
+public function destroy($id)
+{
+    $appointment = Appointment::findOrFail($id);
+    $appointment->delete();
+
+    return response()->json(['message' => 'Consulta removida com sucesso.']);
+}
+
+|------------------------------------------------------------|
