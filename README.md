@@ -37,8 +37,8 @@ Estrutura de Class
       Patient <-> Appointment (um paciente pode ter várias consultas).
       Doctor <-> Schedule (um médico pode ter vários horários disponíveis).
     (N:N):
-      Doctor <-> Speciality (um médico pode ter várias especialidades, e uma especialidades pode                                 ter vários mádicos).
-      Room <-> Schedule (Uma sala pode estar disponível em múltiplos horários, e um horário pode                             estar associado a várias salas).
+      Doctor <-> Speciality (um médico pode ter várias especialidades, e uma especialidades pode ter vários mádicos).
+      Room <-> Schedule (Uma sala pode estar disponível em múltiplos horários, e um horário pode estar associado a várias salas).
     Outras relações relevantes:
       Patient <-> Prescription (Um paciente pode ter várias receitas médicas).
       Appointment <-> Schedule (Cada consulta deve respeitar um horário disponível).
@@ -173,7 +173,151 @@ ROUTES
     Route::get('patients/{id}', [PatientController::class, 'show']);
     Route::get('patients/{id}/appointments', [PatientController::class, 'appointments']);
 
-  
+PASSOS QUE ME FALTAM FAZER
 
 
-      
+
+
+
+
+
+
+
+
+Project Requirements and Current Status
+Objectives:
+Autenticação JWT + Sistema de Roles com 2 no mínimo
+Definição de routes
+Models (5) com métodos das relações
+Validação de dados + Alteração das mensagens + Respostas em JSON
+Migrations (5)
+Controllers (5)
+Qualidade de código
+Current Status:
+Autenticação JWT + Sistema de Roles com 2 no mínimo
+
+Status: Not implemented yet.
+Next Steps: Implement JWT authentication and role-based access control using a package like tymon/jwt-auth.
+Definição de routes
+
+Status: Implemented.
+Details: Routes are defined in api.php and web.php. The RouteServiceProvider is set up to load these routes.
+Models (5) com métodos das relações
+
+Status: Implemented.
+Details: Models for User, Doctor, Patient, Room, Schedule, Appointment, Prescription, and Specialty are created with relationships defined.
+Validação de dados + Alteração das mensagens + Respostas em JSON
+
+Status: Partially implemented.
+Next Steps: Ensure validation rules are comprehensive and cover at least 10 different validation rules. Customize validation messages and ensure all responses are in JSON format.
+Migrations (5)
+
+Status: Implemented.
+Details: Migrations for table_users, table_doctors, table_patients, table_rooms, table_schedules, table_appointments, table_prescriptions, and table_specialties are created.
+Controllers (5)
+
+Status: Implemented.
+Details: Controllers for User, Doctor, Patient, Room, Schedule, Appointment, Prescription, and Specialty are created with basic CRUD operations.
+Qualidade de código
+
+Status: Needs review.
+Next Steps: Ensure code quality by following best practices, such as proper naming conventions, code organization, and comments where necessary.
+Detailed Next Steps:
+Implement JWT Authentication and Role-Based Access Control:
+
+Install tymon/jwt-auth package.
+composer require tymon/jwt-auth
+
+Configure JWT:
+Add the service provider to app.php:
+<?php
+'providers' => [
+    // Other Service Providers
+
+    Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+],
+
+
+Publish the configuration:
+php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+
+Generate the JWT secret:
+php artisan jwt:secret
+
+Update auth.php:
+<?php
+'guards' => [
+    'api' => [
+        'driver' => 'jwt',
+        'provider' => 'users',
+    ],
+],
+
+Create AuthController:
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use JWTAuth;
+
+class AuthController extends Controller
+{
+    public function register(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:table_users',
+            'password' => 'required|string|min:8',
+            'role' => 'required|in:admin,doctor,patient',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => $request->role,
+        ]);
+
+        $token = JWTAuth::fromUser($user);
+
+        return response()->json(compact('user', 'token'), 201);
+    }
+
+    public function login(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (!$token = JWTAuth::attempt($credentials)) {
+            return response()->json(['error' => 'Invalid credentials'], 401);
+        }
+
+        return response()->json(compact('token'));
+    }
+}
+
+
+Protect Routes:
+Update api.php to use the auth:api middleware:
+<?php
+Route::middleware('auth:api')->group(function () {
+    Route::apiResource('users', UserController::class);
+    Route::apiResource('patients', PatientController::class);
+    Route::apiResource('doctors', DoctorController::class);
+    Route::apiResource('rooms', RoomController::class);
+    Route::apiResource('schedules', ScheduleController::class);
+    Route::apiResource('appointments', AppointmentController::class);
+    Route::apiResource('prescriptions', PrescriptionController::class);
+    Route::apiResource('specialties', SpecialtyController::class);
+});
+
+
+
+
