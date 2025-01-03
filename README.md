@@ -194,32 +194,32 @@ Migrations (5)
 Controllers (5)
 Qualidade de código
 Current Status:
-Autenticação JWT + Sistema de Roles com 2 no mínimo
 
+Autenticação JWT + Sistema de Roles com 2 no mínimo
 Status: Not implemented yet.
 Next Steps: Implement JWT authentication and role-based access control using a package like tymon/jwt-auth.
-Definição de routes
 
+Definição de routes
 Status: Implemented.
 Details: Routes are defined in api.php and web.php. The RouteServiceProvider is set up to load these routes.
-Models (5) com métodos das relações
 
+Models (5) com métodos das relações
 Status: Implemented.
 Details: Models for User, Doctor, Patient, Room, Schedule, Appointment, Prescription, and Specialty are created with relationships defined.
-Validação de dados + Alteração das mensagens + Respostas em JSON
 
+Validação de dados + Alteração das mensagens + Respostas em JSON
 Status: Partially implemented.
 Next Steps: Ensure validation rules are comprehensive and cover at least 10 different validation rules. Customize validation messages and ensure all responses are in JSON format.
-Migrations (5)
 
+Migrations (5)
 Status: Implemented.
 Details: Migrations for table_users, table_doctors, table_patients, table_rooms, table_schedules, table_appointments, table_prescriptions, and table_specialties are created.
-Controllers (5)
 
+Controllers (5)
 Status: Implemented.
 Details: Controllers for User, Doctor, Patient, Room, Schedule, Appointment, Prescription, and Specialty are created with basic CRUD operations.
-Qualidade de código
 
+Qualidade de código
 Status: Needs review.
 Next Steps: Ensure code quality by following best practices, such as proper naming conventions, code organization, and comments where necessary.
 Detailed Next Steps:
