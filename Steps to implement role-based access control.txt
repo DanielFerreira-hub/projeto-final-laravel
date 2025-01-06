@@ -1,0 +1,202 @@
+Steps to implement role-based access control
+
+1. Define Middleware for Role Checking
+
+First, create middleware to check for user roles.
+
+Create the middleware using Artisan command:
+
+	php artisan make:middleware CheckRole
+
+Update the generated middleware file app/Http/Middleware/CheckRole.php:
+
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class CheckRole
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @param  string  $role
+     * @return mixed
+     */
+    public function handle(Request $request, Closure $next, $role)
+    {
+        if (Auth::check() && Auth::user()->role == $role) {
+            return $next($request);
+        }
+
+        return response()->json(['error' => 'Unauthorized'], 403);
+    }
+}
+
+|----------------------------------------------------------------------|
+
+2. Register Middleware
+
+Register the middleware in your app/Http/Kernel.php file:
+
+protected $routeMiddleware = [
+    // other middleware
+    'role' => \App\Http\Middleware\CheckRole::class,
+];
+
+|----------------------------------------------------------------------|
+
+3. Apply Middleware to Routes
+
+Apply the middleware to your routes in routes/api.php:
+
+// Authentication routes
+Route::post('/auth/register', [AuthController::class, 'register']);
+Route::post('/auth/login', [AuthController::class, 'login']);
+
+// Protected routes
+Route::middleware(['jwt.auth'])->group(function () {
+    Route::middleware(['role:admin'])->group(function () {
+        Route::get('/users', [UserController::class, 'index']);
+        Route::post('/users', [UserController::class, 'store']);
+        Route::get('/users/{id}', [UserController::class, 'show']);
+        Route::put('/users/{id}', [UserController::class, 'update']);
+        Route::delete('/users/{id}', [UserController::class, 'destroy']);
+    });
+
+    Route::middleware(['role:admin', 'role:doctor'])->group(function () {
+        Route::get('/patients', [PatientController::class, 'index']);
+        Route::post('/patients', [PatientController::class, 'store']);
+        Route::get('/patients/{id}', [PatientController::class, 'show']);
+        Route::put('/patients/{id}', [PatientController::class, 'update']);
+        Route::delete('/patients/{id}', [PatientController::class, 'destroy']);
+
+        Route::get('/doctors', [DoctorController::class, 'index']);
+        Route::post('/doctors', [DoctorController::class, 'store']);
+        Route::get('/doctors/{id}', [DoctorController::class, 'show']);
+        Route::put('/doctors/{id}', [DoctorController::class, 'update']);
+        Route::delete('/doctors/{id}', [DoctorController::class, 'destroy']);
+
+        Route::get('/rooms', [RoomController::class, 'index']);
+        Route::post('/rooms', [RoomController::class, 'store']);
+        Route::get('/rooms/{id}', [RoomController::class, 'show']);
+        Route::put('/rooms/{id}', [RoomController::class, 'update']);
+        Route::delete('/rooms/{id}', [RoomController::class, 'destroy']);
+
+        Route::get('/schedules', [ScheduleController::class, 'index']);
+        Route::post('/schedules', [ScheduleController::class, 'store']);
+        Route::get('/schedules/{id}', [ScheduleController::class, 'show']);
+        Route::put('/schedules/{id}', [ScheduleController::class, 'update']);
+        Route::delete('/schedules/{id}', [ScheduleController::class, 'destroy']);
+
+        Route::get('/appointments', [AppointmentController::class, 'index']);
+        Route::post('/appointments', [AppointmentController::class, 'store']);
+        Route::get('/appointments/{id}', [AppointmentController::class, 'show']);
+        Route::put('/appointments/{id}', [AppointmentController::class, 'update']);
+        Route::delete('/appointments/{id}', [AppointmentController::class, 'destroy']);
+
+        Route::get('/prescriptions', [PrescriptionController::class, 'index']);
+        Route::post('/prescriptions', [PrescriptionController::class, 'store']);
+        Route::get('/prescriptions/{id}', [PrescriptionController::class, 'show']);
+        Route::put('/prescriptions/{id}', [PrescriptionController::class, 'update']);
+        Route::delete('/prescriptions/{id}', [PrescriptionController::class, 'destroy']);
+
+        Route::get('/specialties', [SpecialtyController::class, 'index']);
+        Route::post('/specialties', [SpecialtyController::class, 'store']);
+        Route::get('/specialties/{id}', [SpecialtyController::class, 'show']);
+        Route::put('/specialties/{id}', [SpecialtyController::class, 'update']);
+        Route::delete('/specialties/{id}', [SpecialtyController::class, 'destroy']);
+    });
+
+    Route::middleware(['role:patient'])->group(function () {
+        Route::get('/users/{id}', [UserController::class, 'show']);
+        Route::put('/users/{id}', [UserController::class, 'update']);
+        Route::get('/appointments/{id}', [AppointmentController::class, 'show']);
+        Route::put('/appointments/{id}', [AppointmentController::class, 'update']);
+    });
+});
+
+|--------------------------------------------------------------------------------------------|
+
+4. Create Policies for Granular Control
+
+For more granular control, you can create policies. Here’s an example for the Patient model:
+
+Run this command to create a policy:
+
+	php artisan make:policy PatientPolicy --model=Patient
+
+
+Update the generated policy file app/Policies/PatientPolicy.php:
+<?php
+
+namespace App\Policies;
+
+use App\Models\Patient;
+use App\Models\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
+
+class PatientPolicy
+{
+    use HandlesAuthorization;
+
+    /**
+     * Determine whether the user can view the patient.
+     */
+    public function view(User $user, Patient $patient)
+    {
+        return $user->id === $patient->user_id || $user->role === 'doctor' || $user->role === 'admin';
+    }
+
+    /**
+     * Determine whether the user can update the patient.
+     */
+    public function update(User $user, Patient $patient)
+    {
+        return $user->id === $patient->user_id || $user->role === 'admin';
+    }
+
+    // Add other methods as needed
+}
+
+|----------------------------------------------------------------------|
+
+Register the policy in app/Providers/AuthServiceProvider.php:
+
+<?php
+
+namespace App\Providers;
+
+use App\Models\Patient;
+use App\Policies\PatientPolicy;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
+
+class AuthServiceProvider extends ServiceProvider
+{
+    protected $policies = [
+        Patient::class => PatientPolicy::class,
+    ];
+
+    public function boot()
+    {
+        $this->registerPolicies();
+    }
+}
+|---------------------------------------------------------------------|
+
+Apply the policy in the PatientController:
+
+public function show($id)
+{
+    $patient = Patient::findOrFail($id);
+
+    $this->authorize('view', $patient);
+
+    return response()->json($patient);
+}
