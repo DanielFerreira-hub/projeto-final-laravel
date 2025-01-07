@@ -8,9 +8,7 @@ This README provides detailed information about the endpoints available in your 
 **Endpoint:** `POST /api/auth/register`  
 **URL:** `http://127.0.0.1:8000/api/auth/register`  
 **Headers:**
-```plaintext
-Content-Type: application/json
-Request Body:
+**Request Body:**
 {
     "name": "John Doe",
     "email": "johndoe@example.com",
