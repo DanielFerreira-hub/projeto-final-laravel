@@ -7,9 +7,9 @@ This README provides detailed information about the endpoints available in your 
 ### Register User
 **Endpoint:** `POST /api/auth/register`  
 **URL:** `http://127.0.0.1:8000/api/auth/register`  
-**Headers:** `none`
-**Content-Type:** `application/json`
-**Request Body:**
+**Headers:** `none`  
+**Content-Type:** `application/json`  
+**Request Body:**  
 ```
 {
     "name": "John Doe",
