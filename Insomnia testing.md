@@ -309,7 +309,6 @@ Roles and Access Control
 Make sure to replace <your_jwt_token> with the actual JWT token obtained after logging in.
 
 Testing with Insomnia
-
     1. Open Insomnia.
     2. Create a new request.
     3. Set the method (e.g., POST, PUT, GET) and the URL as described above.
