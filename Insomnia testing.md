@@ -10,7 +10,7 @@ This README provides detailed information about the endpoints available in your 
 **Headers:** `none`
 **Content-Type:** `application/json`
 **Request Body:**
-```plaintext
+```
 {
     "name": "John Doe",
     "email": "johndoe@example.com",
