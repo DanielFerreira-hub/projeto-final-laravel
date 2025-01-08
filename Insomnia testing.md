@@ -25,10 +25,10 @@ This README provides detailed information about the endpoints available in your 
 
 ### Login User
 
-**Endpoint:** POST /api/auth/login
-**URL:** http://127.0.0.1:8000/api/auth/login
+**Endpoint:** `POST /api/auth/login`  
+**URL:** `http://127.0.0.1:8000/api/auth/login` 
 **Headers:**
-**Content-Type:** application/json
+**Content-Type:** `application/json`  
 **Request Body:**
 ```
 {
@@ -40,11 +40,11 @@ This README provides detailed information about the endpoints available in your 
 ## Users
 ### Create User
 
-**Endpoint:** POST /api/users
-**URL:** http://127.0.0.1:8000/api/users
+**Endpoint:** `POST /api/users`  
+**URL:** `http://127.0.0.1:8000/api/users`  
 **Headers:**
-**Content-Type:** Bearer <your_jwt_token>
-**Content-Type:** application/json
+**Content-Type:** `Bearer <your_jwt_token>`  
+**Content-Type:** `application/json`  
 **Request Body:**
 ```
 {
@@ -59,11 +59,11 @@ This README provides detailed information about the endpoints available in your 
 
 ### Update User
 
-**Endpoint:** PUT /api/users/{id}
-**URL:** http://127.0.0.1:8000/api/users/1 // Replace 1 with the actual user ID
+**Endpoint:** `PUT /api/users/{id}`  
+**URL:** `http://127.0.0.1:8000/api/users/1 // Replace 1 with the actual user ID`  
 **Headers:**
-**Content-Type:** Bearer <your_jwt_token>
-**Content-Type:** application/json
+**Content-Type:** `Bearer <your_jwt_token>`  
+**Content-Type:** `application/json`  
 **Request Body:**
 ```
 {
@@ -75,11 +75,11 @@ This README provides detailed information about the endpoints available in your 
 ## Patients
 ### Create Patient
 
-**Endpoint:** POST /api/patients
-**URL:** http://127.0.0.1:8000/api/patients
+**Endpoint:** `POST /api/patients`  
+**URL:** `http://127.0.0.1:8000/api/patients`  
 **Headers:**
-**Content-Type:** Bearer <your_jwt_token>
-**Content-Type:** application/json
+**Content-Type:** `Bearer <your_jwt_token>`  
+**Content-Type:** `application/json`  
 
 **Request Body:**
 ```
@@ -92,11 +92,11 @@ This README provides detailed information about the endpoints available in your 
 
 ### Update Patient
 
-**Endpoint:** PUT /api/patients/{id}
-**URL:** http://127.0.0.1:8000/api/patients/1 // Replace 1 with the actual patient ID
+**Endpoint:** `PUT /api/patients/{id}`  
+**URL:** `http://127.0.0.1:8000/api/patients/1 // Replace 1 with the actual patient ID`  
 **Headers:**
-**Content-Type:** Bearer <your_jwt_token>
-**Content-Type:** application/json
+**Content-Type:** `Bearer <your_jwt_token>`  
+**Content-Type:** `application/json`  
 
 **Request Body:**
 ```
@@ -108,11 +108,11 @@ This README provides detailed information about the endpoints available in your 
 ## Doctors
 ### Create Doctor
 
-**Endpoint:** POST /api/doctors
-**URL:** http://127.0.0.1:8000/api/doctors
+**Endpoint:** `POST /api/doctors`  
+**URL:** `http://127.0.0.1:8000/api/doctors`  
 **Headers:**
-**Content-Type:** Bearer <your_jwt_token>
-**Content-Type:** application/json
+**Content-Type:** `Bearer <your_jwt_token>`  
+**Content-Type:** `application/json`  
 **Request Body:**
 ```
 {
@@ -125,11 +125,11 @@ This README provides detailed information about the endpoints available in your 
 
 ### Update Doctor
 
-**Endpoint:** PUT /api/doctors/{id}
-**URL:** http://127.0.0.1:8000/api/doctors/1 // Replace 1 with the actual doctor ID
+**Endpoint:** `PUT /api/doctors/{id}`  
+**URL:** `http://127.0.0.1:8000/api/doctors/1 // Replace 1 with the actual doctor ID`  
 **Headers:**
-**Content-Type:** Bearer <your_jwt_token>
-**Content-Type:** application/json
+**Content-Type:** `Bearer <your_jwt_token>`  
+**Content-Type:** `application/json`  
 **Request Body:**
 ```
 {
@@ -140,11 +140,11 @@ This README provides detailed information about the endpoints available in your 
 ## Rooms
 ### Create Room
 
-**Endpoint:** POST /api/rooms
-**URL:** http://127.0.0.1:8000/api/rooms
+**Endpoint:** `POST /api/rooms`  
+**URL:** `http://127.0.0.1:8000/api/rooms`  
 **Headers:**
-**Content-Type:** Bearer <your_jwt_token>
-**Content-Type:** application/json
+**Content-Type:** `Bearer <your_jwt_token>`  
+**Content-Type:** `application/json`  
 **Request Body:**
 ```
 {
@@ -156,11 +156,11 @@ This README provides detailed information about the endpoints available in your 
 
 ### Update Room
 
-**Endpoint:** PUT /api/rooms/{id}
-**URL:** http://127.0.0.1:8000/api/rooms/1 // Replace 1 with the actual room ID
+**Endpoint:** `PUT /api/rooms/{id}`  
+**URL:** `http://127.0.0.1:8000/api/rooms/1 // Replace 1 with the actual room ID`  
 **Headers:**
-**Content-Type:** Bearer <your_jwt_token>
-**Content-Type:** application/json
+**Content-Type:** `Bearer <your_jwt_token>`  
+**Content-Type:** `application/json`  
 **Request Body:**
 ```
 {
@@ -171,11 +171,11 @@ This README provides detailed information about the endpoints available in your 
 ## Schedules
 ### Create Schedule
 
-**Endpoint:** POST /api/schedules
-**URL:** http://127.0.0.1:8000/api/schedules
+**Endpoint:** `POST /api/schedules`  
+**URL:** `http://127.0.0.1:8000/api/schedules`  
 **Headers:**
-**Content-Type:** Bearer <your_jwt_token>
-**Content-Type:** application/json
+**Content-Type:** `Bearer <your_jwt_token>`  
+**Content-Type:** `application/json`  
 **Request Body:**
 ```
 {
@@ -189,11 +189,11 @@ This README provides detailed information about the endpoints available in your 
 
 ### Update Schedule
 
-**Endpoint:** PUT /api/schedules/{id}
-**URL:** http://127.0.0.1:8000/api/schedules/1 // Replace 1 with the actual schedule ID
+**Endpoint:** `PUT /api/schedules/{id}`  
+**URL:** `http://127.0.0.1:8000/api/schedules/1 // Replace 1 with the actual schedule ID`  
 **Headers:**
-**Content-Type:** Bearer <your_jwt_token>
-**Content-Type:** application/json
+**Content-Type:** `Bearer <your_jwt_token>`  
+**Content-Type:** `application/json`  
 **Request Body:**
 ```
 {
@@ -204,11 +204,11 @@ This README provides detailed information about the endpoints available in your 
 ## Appointments
 ### Create Appointment
 
-**Endpoint:** POST /api/appointments
-**URL:** http://127.0.0.1:8000/api/appointments
+**Endpoint:** `POST /api/appointments`  
+**URL:** `http://127.0.0.1:8000/api/appointments`  
 **Headers:**
-**Content-Type:** Bearer <your_jwt_token>
-**Content-Type:** application/json
+**Content-Type:** `Bearer <your_jwt_token>`  
+**Content-Type:** `application/json`  
 **Request Body:**
 ```
 {
@@ -223,11 +223,11 @@ This README provides detailed information about the endpoints available in your 
 
 ### Update Appointment
 
-**Endpoint:** PUT /api/appointments/{id}
-**URL:** http://127.0.0.1:8000/api/appointments/1 // Replace 1 with the actual appointment ID
+**Endpoint:** `PUT /api/appointments/{id}`  
+**URL:** `http://127.0.0.1:8000/api/appointments/1 // Replace 1 with the actual appointment ID`  
 **Headers:**
-**Content-Type:** Bearer <your_jwt_token>
-**Content-Type:** application/json
+**Content-Type:** `Bearer <your_jwt_token>`  
+**Content-Type:** `application/json`  
 **Request Body:**
 ```
 {
@@ -238,11 +238,11 @@ This README provides detailed information about the endpoints available in your 
 ## Prescriptions
 ### Create Prescription
 
-**Endpoint:** POST /api/prescriptions
-**URL:** http://127.0.0.1:8000/api/prescriptions
+**Endpoint:** `POST /api/prescriptions`  
+**URL:** `http://127.0.0.1:8000/api/prescriptions`  
 **Headers:**
-**Content-Type:** Bearer <your_jwt_token>
-**Content-Type:** application/json
+**Content-Type:** `Bearer <your_jwt_token>`  
+**Content-Type:** `application/json`  
 **Request Body:**
 ```
 {
@@ -253,11 +253,11 @@ This README provides detailed information about the endpoints available in your 
 
 ### Update Prescription
 
-**Endpoint:** PUT /api/prescriptions/{id}
-**URL:** http://127.0.0.1:8000/api/prescriptions/1 // Replace 1 with the actual prescription ID
+**Endpoint:** `PUT /api/prescriptions/{id}`  
+**URL:** `http://127.0.0.1:8000/api/prescriptions/1 // Replace 1 with the actual prescription ID`  
 **Headers:**
-**Content-Type:** Bearer <your_jwt_token>
-**Content-Type:** application/json
+**Content-Type:** `Bearer <your_jwt_token>`  
+**Content-Type:** `application/json`  
 **Request Body:**
 ```
 {
@@ -267,11 +267,11 @@ This README provides detailed information about the endpoints available in your 
 ## Specialties
 ### Create Specialty
 
-**Endpoint:** POST /api/specialties
-**URL:** http://127.0.0.1:8000/api/specialties
+**Endpoint:** `POST /api/specialties`  
+**URL:** `http://127.0.0.1:8000/api/specialties`  
 **Headers:**
-**Content-Type:** Bearer <your_jwt_token>
-**Content-Type:** application/json
+**Content-Type:** `Bearer <your_jwt_token>`  
+**Content-Type:** `application/json`  
 **Request Body:**
 ```
 {
@@ -281,11 +281,11 @@ This README provides detailed information about the endpoints available in your 
 
 ### Update Specialty
 
-**Endpoint:** PUT /api/specialties/{id}
-**URL:** http://127.0.0.1:8000/api/specialties/1 // Replace 1 with the actual specialty ID
+**Endpoint:** `PUT /api/specialties/{id}`  
+**URL:** `http://127.0.0.1:8000/api/specialties/1 // Replace 1 with the actual specialty ID`  
 **Headers:**
-**Content-Type:** Bearer <your_jwt_token>
-**Content-Type:** application/json
+**Content-Type:** `Bearer <your_jwt_token>`  
+**Content-Type:** `application/json`  
 **Request Body:**
 ```
 {
@@ -295,10 +295,10 @@ This README provides detailed information about the endpoints available in your 
 
 ## Custom Method: Get Appointments by Status
 
-**Endpoint:** GET /api/appointments/status/{status}
-**URL:** http://127.0.0.1:8000/api/appointments/status/scheduled // Replace scheduled with the desired status
+**Endpoint:** `GET /api/appointments/status/{status}`  
+**URL:** `http://127.0.0.1:8000/api/appointments/status/scheduled // Replace scheduled with the desired status`  
 **Headers:**
-**Content-Type:** Bearer <your_jwt_token>
+**Content-Type:** `Bearer <your_jwt_token>`  
 
 
 Roles and Access Control
