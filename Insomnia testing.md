@@ -12,15 +12,35 @@ This README provides detailed information about the endpoints available in your 
 **Content-Type:** `application/json`  
 **Request Body:**  
 ```
+ADMIN
+{
+    "name": "Admin User",
+    "email": "admin@example.com",
+    "password": "adminpassword789",
+    "role": 1
+}
+
+DOCTOR
+{
+    "name": "Dr. Jane Smith",
+    "email": "jane.smith@example.com",
+    "password": "strongpassword456",
+    "role": 2,
+    "phone_number": "+351912345678",
+    "specialization_summary": "Experienced cardiologist with over 10 years in the field.",
+    "specialties": [1, 2, 3]
+}
+
+PATIENT
 {
     "name": "John Doe",
-    "email": "johndoe@example.com",
-    "password": "securepassword",
-    "role": "doctor",
-    "phone_number": "1234567890",
-    "specialization_summary": "Cardiology Specialist",
-    "specialties": [1, 2]
+    "email": "john.doe@example.com",
+    "password": "securepassword123",
+    "role": 3,
+    "birth_date": "1990-05-15",
+    "gender": "male"
 }
+
 ```
 
 ### Login User
