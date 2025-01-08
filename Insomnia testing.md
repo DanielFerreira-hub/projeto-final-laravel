@@ -27,7 +27,7 @@ This README provides detailed information about the endpoints available in your 
 
 **Endpoint:** `POST /api/auth/login`  
 **URL:** `http://127.0.0.1:8000/api/auth/login`  
-**Headers:**
+**Headers:**  
 **Content-Type:** `application/json`  
 **Request Body:**
 ```
@@ -42,7 +42,7 @@ This README provides detailed information about the endpoints available in your 
 
 **Endpoint:** `POST /api/users`  
 **URL:** `http://127.0.0.1:8000/api/users`  
-**Headers:**
+**Headers:**  
 **Content-Type:** `Bearer <your_jwt_token>`  
 **Content-Type:** `application/json`  
 **Request Body:**
@@ -61,7 +61,7 @@ This README provides detailed information about the endpoints available in your 
 
 **Endpoint:** `PUT /api/users/{id}`  
 **URL:** `http://127.0.0.1:8000/api/users/1 // Replace 1 with the actual user ID`  
-**Headers:**
+**Headers:**  
 **Content-Type:** `Bearer <your_jwt_token>`  
 **Content-Type:** `application/json`  
 **Request Body:**
@@ -77,7 +77,7 @@ This README provides detailed information about the endpoints available in your 
 
 **Endpoint:** `POST /api/patients`  
 **URL:** `http://127.0.0.1:8000/api/patients`  
-**Headers:**
+**Headers:**  
 **Content-Type:** `Bearer <your_jwt_token>`  
 **Content-Type:** `application/json`  
 
@@ -94,7 +94,7 @@ This README provides detailed information about the endpoints available in your 
 
 **Endpoint:** `PUT /api/patients/{id}`  
 **URL:** `http://127.0.0.1:8000/api/patients/1 // Replace 1 with the actual patient ID`  
-**Headers:**
+**Headers:**  
 **Content-Type:** `Bearer <your_jwt_token>`  
 **Content-Type:** `application/json`  
 
@@ -110,7 +110,7 @@ This README provides detailed information about the endpoints available in your 
 
 **Endpoint:** `POST /api/doctors`  
 **URL:** `http://127.0.0.1:8000/api/doctors`  
-**Headers:**
+**Headers:**  
 **Content-Type:** `Bearer <your_jwt_token>`  
 **Content-Type:** `application/json`  
 **Request Body:**
@@ -127,7 +127,7 @@ This README provides detailed information about the endpoints available in your 
 
 **Endpoint:** `PUT /api/doctors/{id}`  
 **URL:** `http://127.0.0.1:8000/api/doctors/1 // Replace 1 with the actual doctor ID`  
-**Headers:**
+**Headers:**  
 **Content-Type:** `Bearer <your_jwt_token>`  
 **Content-Type:** `application/json`  
 **Request Body:**
@@ -142,7 +142,7 @@ This README provides detailed information about the endpoints available in your 
 
 **Endpoint:** `POST /api/rooms`  
 **URL:** `http://127.0.0.1:8000/api/rooms`  
-**Headers:**
+**Headers:**  
 **Content-Type:** `Bearer <your_jwt_token>`  
 **Content-Type:** `application/json`  
 **Request Body:**
@@ -158,7 +158,7 @@ This README provides detailed information about the endpoints available in your 
 
 **Endpoint:** `PUT /api/rooms/{id}`  
 **URL:** `http://127.0.0.1:8000/api/rooms/1 // Replace 1 with the actual room ID`  
-**Headers:**
+**Headers:**  
 **Content-Type:** `Bearer <your_jwt_token>`  
 **Content-Type:** `application/json`  
 **Request Body:**
@@ -173,7 +173,7 @@ This README provides detailed information about the endpoints available in your 
 
 **Endpoint:** `POST /api/schedules`  
 **URL:** `http://127.0.0.1:8000/api/schedules`  
-**Headers:**
+**Headers:**  
 **Content-Type:** `Bearer <your_jwt_token>`  
 **Content-Type:** `application/json`  
 **Request Body:**
@@ -191,7 +191,7 @@ This README provides detailed information about the endpoints available in your 
 
 **Endpoint:** `PUT /api/schedules/{id}`  
 **URL:** `http://127.0.0.1:8000/api/schedules/1 // Replace 1 with the actual schedule ID`  
-**Headers:**
+**Headers:**  
 **Content-Type:** `Bearer <your_jwt_token>`  
 **Content-Type:** `application/json`  
 **Request Body:**
@@ -206,7 +206,7 @@ This README provides detailed information about the endpoints available in your 
 
 **Endpoint:** `POST /api/appointments`  
 **URL:** `http://127.0.0.1:8000/api/appointments`  
-**Headers:**
+**Headers:**  
 **Content-Type:** `Bearer <your_jwt_token>`  
 **Content-Type:** `application/json`  
 **Request Body:**
@@ -225,7 +225,7 @@ This README provides detailed information about the endpoints available in your 
 
 **Endpoint:** `PUT /api/appointments/{id}`  
 **URL:** `http://127.0.0.1:8000/api/appointments/1 // Replace 1 with the actual appointment ID`  
-**Headers:**
+**Headers:**  
 **Content-Type:** `Bearer <your_jwt_token>`  
 **Content-Type:** `application/json`  
 **Request Body:**
@@ -240,7 +240,7 @@ This README provides detailed information about the endpoints available in your 
 
 **Endpoint:** `POST /api/prescriptions`  
 **URL:** `http://127.0.0.1:8000/api/prescriptions`  
-**Headers:**
+**Headers:**  
 **Content-Type:** `Bearer <your_jwt_token>`  
 **Content-Type:** `application/json`  
 **Request Body:**
@@ -255,7 +255,7 @@ This README provides detailed information about the endpoints available in your 
 
 **Endpoint:** `PUT /api/prescriptions/{id}`  
 **URL:** `http://127.0.0.1:8000/api/prescriptions/1 // Replace 1 with the actual prescription ID`  
-**Headers:**
+**Headers:**  
 **Content-Type:** `Bearer <your_jwt_token>`  
 **Content-Type:** `application/json`  
 **Request Body:**
@@ -269,7 +269,7 @@ This README provides detailed information about the endpoints available in your 
 
 **Endpoint:** `POST /api/specialties`  
 **URL:** `http://127.0.0.1:8000/api/specialties`  
-**Headers:**
+**Headers:**  
 **Content-Type:** `Bearer <your_jwt_token>`  
 **Content-Type:** `application/json`  
 **Request Body:**
@@ -283,7 +283,7 @@ This README provides detailed information about the endpoints available in your 
 
 **Endpoint:** `PUT /api/specialties/{id}`  
 **URL:** `http://127.0.0.1:8000/api/specialties/1 // Replace 1 with the actual specialty ID`  
-**Headers:**
+**Headers:**  
 **Content-Type:** `Bearer <your_jwt_token>`  
 **Content-Type:** `application/json`  
 **Request Body:**
@@ -297,7 +297,7 @@ This README provides detailed information about the endpoints available in your 
 
 **Endpoint:** `GET /api/appointments/status/{status}`  
 **URL:** `http://127.0.0.1:8000/api/appointments/status/scheduled // Replace scheduled with the desired status`  
-**Headers:**
+**Headers:**  
 **Content-Type:** `Bearer <your_jwt_token>`  
 
 
