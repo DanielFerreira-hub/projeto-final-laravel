@@ -26,7 +26,7 @@ This README provides detailed information about the endpoints available in your 
 ### Login User
 
 **Endpoint:** `POST /api/auth/login`  
-**URL:** `http://127.0.0.1:8000/api/auth/login` 
+**URL:** `http://127.0.0.1:8000/api/auth/login`  
 **Headers:**
 **Content-Type:** `application/json`  
 **Request Body:**
