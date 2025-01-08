@@ -1,4 +1,5 @@
 # API Testing with Insomnia
+FALTA OS DELETES, OS GETS DE ALL USERS/DOCTORS/PATIENTS, O GET APPOINTMENT ESPECIFICO POR ID, GET TODOS OS SCHEDULES DO DOCTOR, GET TDS OS APPOINTMENTS DO PATIENT, E TESTAR EM CENARIOS DE ERROR 
 
 This README provides detailed information about the endpoints available in your Laravel API for the "Sistema de Gestão de Consultas Médicas" project. You can use these endpoints to test your API using Insomnia or any other API testing tool.
 
